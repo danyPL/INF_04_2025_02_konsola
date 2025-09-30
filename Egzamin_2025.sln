@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egzamin_2025", "Egzamin_2025\Egzamin_2025.csproj", "{69DE36E9-235D-4107-97A6-4870F9338403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestyKonwersji", "TestyKonwersji\TestyKonwersji.csproj", "{BA23E9DF-F709-4A94-A6D8-D17EB6DAEEBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69DE36E9-235D-4107-97A6-4870F9338403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DE36E9-235D-4107-97A6-4870F9338403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DE36E9-235D-4107-97A6-4870F9338403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DE36E9-235D-4107-97A6-4870F9338403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA23E9DF-F709-4A94-A6D8-D17EB6DAEEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA23E9DF-F709-4A94-A6D8-D17EB6DAEEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA23E9DF-F709-4A94-A6D8-D17EB6DAEEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA23E9DF-F709-4A94-A6D8-D17EB6DAEEBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54D41AD6-8E20-4FE6-9EFC-F69EBA08797E}
+	EndGlobalSection
+EndGlobal
