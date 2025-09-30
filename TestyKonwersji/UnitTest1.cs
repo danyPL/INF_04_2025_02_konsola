@@ -10,7 +10,7 @@ namespace TestyKonwersji
             string jednostka_to = "km";
             double wartosc = 1500;
 
-            double wynik = Program.Calculate(1,wartosc,jednostka_from,jednostka_to);
+            double wynik = Program.CalculateLength(wartosc,jednostka_from,jednostka_to);
             Assert.InRange(wynik, 1.499, 1.501);
         }
         [Fact]
@@ -20,7 +20,7 @@ namespace TestyKonwersji
             string jednostka_to = "m";
             double wartosc = 1;
 
-            double wynik = Program.Calculate(1, wartosc, jednostka_from, jednostka_to);
+            double wynik = Program.CalculateLength(wartosc, jednostka_from, jednostka_to);
             Assert.InRange(wynik, 1609.33, 1609.35);
         }
         [Fact]
@@ -30,14 +30,14 @@ namespace TestyKonwersji
             string jednostka_to = "lb";
             double wartosc = 1;
 
-            double wynik = Program.Calculate(2, wartosc, jednostka_from, jednostka_to);
+            double wynik = Program.CalculateWeight(wartosc, jednostka_from, jednostka_to);
             Assert.InRange(wynik, 2.2045, 2.2047);
         }
         [Fact]
         public void Miligramy_na_funty()
         {
             double wartosc = 1000000;
-            double wynik = Program.Calculate(2, wartosc, "mg", "lb");
+            double wynik = Program.CalculateWeight(wartosc, "mg", "lb");
             Assert.InRange(wynik, 2.204, 2.205); 
         }
         [Fact]
@@ -47,13 +47,13 @@ namespace TestyKonwersji
             string jednostka_to = "f";
             double wartosc = 100;
 
-            double wynik = Program.Calculate(3, wartosc, jednostka_from, jednostka_to);
+            double wynik = Program.CalculateTemp(wartosc, jednostka_from, jednostka_to);
             Assert.InRange(wynik, 211.9, 212.1);
         }
         [Fact]
         public void Fahrenhit_na_Celcius()
         {
-            double wynik = Program.Calculate(3, 32, "f", "c");
+            double wynik = Program.CalculateTemp(32, "f", "c");
             Assert.InRange(wynik, -0.01, 0.01); 
         }
         [Fact]
@@ -63,7 +63,7 @@ namespace TestyKonwersji
             string jednostka_to = "k";
             double wartosc = 0;
 
-            double wynik = Program.Calculate(3, wartosc, jednostka_from, jednostka_to);
+            double wynik = Program.CalculateTemp(wartosc, jednostka_from, jednostka_to);
             Assert.InRange(wynik, 273.14, 273.16);
         }
         [Fact]
@@ -73,7 +73,7 @@ namespace TestyKonwersji
             string jednostka_to = "blad";
             double wartosc = 1000;
 
-            double wynik = Program.Calculate(3, wartosc, jednostka_from, jednostka_to);
+            double wynik = Program.CalculateLength(wartosc, jednostka_from, jednostka_to);
             Assert.Equal(-1.0, wynik);
         }
         [Fact]
@@ -83,7 +83,7 @@ namespace TestyKonwersji
             string jednostka_to = "blad";
             double wartosc = 100;
 
-            double wynik = Program.Calculate(3, wartosc, jednostka_from, jednostka_to);
+            double wynik = Program.CalculateTemp(wartosc, jednostka_from, jednostka_to);
             Assert.Equal(-1.0, wynik);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 
 namespace Egzamin_2025
 {
@@ -55,82 +56,84 @@ namespace Egzamin_2025
                         Console.WriteLine("Podaj jednostkę docelową:");
                         string jednostka_to = Console.ReadLine();
 
-                        double wartoscD = Calculate(typeC, wartoscI, jednostka_from, jednostka_to);
+                        double wartoscD =0;
+                        switch (typeC)
+                        {
+                            case 1:
+                                wartoscD=CalculateLength(wartoscI, jednostka_from, jednostka_to);
+                                break;
+                            case 2:
+                                wartoscD = CalculateWeight(wartoscI, jednostka_from, jednostka_to);
+                                break;
+                            case 3:
+                                wartoscD = CalculateTemp(wartoscI, jednostka_from, jednostka_to);
+                                break;
+                        }
                         Console.WriteLine($"Konwersja z {jednostka_from} na {jednostka_to}");
                         Console.WriteLine($"Wynik: {wartoscD}{jednostka_to}\n");
                     }
                 }
             }
         }
-        public static double Calculate(int type, double wartosc, string jednostka_from, string jednostka_to)
+        public static double CalculateLength(double wartosc, string jednostka_from, string jednostka_to)
         {
-            switch (type)
+            double metry = jednostka_from switch
             {
-                case 1: // Długość
-                    {
-                        double metry = jednostka_from switch
-                        {
-                            "m" => wartosc,
-                            "km" => wartosc * 1000,
-                            "mi" => wartosc * 1609.34,
-                            _ => -1.0
-                        };
+                "m" => wartosc,
+                "km" => wartosc * 1000,
+                "mi" => wartosc * 1609.34,
+                _ => -1.0
+            };
 
-                        if (metry < 0) return -1.0;
+            if (metry < 0) return -1.0;
 
-                        return jednostka_to switch
-                        {
-                            "m" => metry,
-                            "km" => metry / 1000,
-                            "mi" => metry / 1609.34,
-                            _ => -1.0
-                        };
-                    }
-
-                case 2: // Masa
-                    {
-                        double mg = jednostka_from switch
-                        {
-                            "mg" => wartosc,
-                            "kg" => wartosc * 1000000,
-                            "g" => wartosc * 1000,
-                            "lb" => wartosc * 453592,
-                            _ => -1.0
-                        };
-
-                        if (mg < 0) return -1.0;
-
-                        return jednostka_to switch
-                        {
-                            "mg" => mg,
-                            "g" => mg / 1000,
-                            "kg" => mg / 1_000_000,
-                            "lb" => mg / 453592,
-                            _ => -1.0
-                        };
-                    }
-
-                case 3: // Temperatura
-                    {
-                        return (jednostka_from.ToLower(), jednostka_to.ToLower()) switch
-                        {
-                            ("c", "f") => wartosc * 9 / 5 + 32,
-                            ("f", "c") => (wartosc - 32) * 5 / 9,
-                            ("c", "k") => wartosc + 273.15,
-                            ("k", "c") => wartosc - 273.15,
-                            ("f", "k") => (wartosc - 32) * 5 / 9 + 273.15,
-                            ("k", "f") => (wartosc - 273.15) * 9 / 5 + 32,
-                            ("c", "c") => wartosc,
-                            ("f", "f") => wartosc,
-                            ("k", "k") => wartosc,
-                            _ => -1.0
-                        };
-                    }
-
-                default:
-                    return -1.0;
-            }
+            return jednostka_to switch
+            {
+                "m" => metry,
+                "km" => metry / 1000,
+                "mi" => metry / 1609.34,
+                _ => -1.0
+            };
         }
+        public static double CalculateWeight(double wartosc, string jednostka_from, string jednostka_to)
+        {
+            double mg = jednostka_from switch
+            {
+                "mg" => wartosc,
+                "kg" => wartosc * 1000000,
+                "g" => wartosc * 1000,
+                "lb" => wartosc * 453592,
+                _ => -1.0
+            };
+
+            if (mg < 0) return -1.0;
+
+            return jednostka_to switch
+            {
+                "mg" => mg,
+                "g" => mg / 1000,
+                "kg" => mg / 1_000_000,
+                "lb" => mg / 453592,
+                _ => -1.0
+            };
+        }
+        public static double CalculateTemp(double wartosc, string jednostka_from, string jednostka_to)
+        {
+            return (jednostka_from.ToLower(), jednostka_to.ToLower()) switch
+            {
+                ("c", "f") => wartosc * 9 / 5 + 32,
+                ("f", "c") => (wartosc - 32) * 5 / 9,
+                ("c", "k") => wartosc + 273.15,
+                ("k", "c") => wartosc - 273.15,
+                ("f", "k") => (wartosc - 32) * 5 / 9 + 273.15,
+                ("k", "f") => (wartosc - 273.15) * 9 / 5 + 32,
+                ("c", "c") => wartosc,
+                ("f", "f") => wartosc,
+                ("k", "k") => wartosc,
+                _ => -1.0
+            };
+        }
+      
 
 
     }
